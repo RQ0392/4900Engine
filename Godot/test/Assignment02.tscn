@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bs4b3yunjtsc2"]
+
+[ext_resource type="Script" uid="uid://cv0inlejoarsr" path="res://Scripts/Caller.gd" id="1_xhsph"]
+[ext_resource type="Script" uid="uid://cgmpiiir7acxh" path="res://Scripts/Receiver.gd" id="2_ityeg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xhsph"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ityeg"]
+
+[node name="Assignment02" type="Node3D" unique_id=1038422260]
+
+[node name="Caller" type="Node3D" parent="." unique_id=882936226 node_paths=PackedStringArray("receiver")]
+script = ExtResource("1_xhsph")
+receiver = NodePath("../Receiver")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Caller" unique_id=386819081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3731837, 0, 0)
+mesh = SubResource("SphereMesh_xhsph")
+
+[node name="Receiver" type="Node3D" parent="." unique_id=1513243951]
+script = ExtResource("2_ityeg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Receiver" unique_id=2137404863]
+mesh = SubResource("CylinderMesh_ityeg")
