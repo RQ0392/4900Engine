@@ -15,9 +15,17 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Test"
-config/features=PackedStringArray("4.6", "Forward Plus")
+run/main_scene="uid://xrqj0hxwwqis"
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [dotnet]
 
 project/assembly_name="Test"
+
+[input]
+
+Attack={
+"deadzone": 0.2,
+"events": []
+}
