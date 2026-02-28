@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://xrqj0hxwwqis"]
+
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://Scene/proto_controller.tscn" id="1_7orom"]
+[ext_resource type="Script" uid="uid://dwju4q2oe4ves" path="res://Scripts/proto_controller.gd" id="2_0vrmw"]
+[ext_resource type="Material" uid="uid://dokabbc72wucm" path="res://Mats/Mat_Yellow.tres" id="2_m7ra3"]
+[ext_resource type="Script" uid="uid://cbvsrfrdb2pn" path="res://Scripts/Coin.gd" id="2_vc63n"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cxy3r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vrmw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m7ra3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m7ra3"]
+size = Vector3(0.5057373, 1, 1)
+
+[node name="A3" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(4.063834, 0, 0, 0, 1, 0, 0, 0, 4.3173633, 1.9992088, 0, 0)
+
+[node name="Ground" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.053023033, 0, 0, 0, 0.99999994, -0.5012237, 7.152556e-07, -0.0016356282)
+mesh = SubResource("PlaneMesh_cxy3r")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.05302304, 0, 0, 0, 1, -0.49975806, 0, 0)
+shape = SubResource("BoxShape3D_0vrmw")
+
+[node name="ProtoController" parent="." instance=ExtResource("1_7orom")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.067266464, 0.30219162, 0.07113147)
+script = ExtResource("2_0vrmw")
+
+[node name="Coin" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.766782, 0.44853485, 0)
+script = ExtResource("2_vc63n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Coin"]
+transform = Transform3D(-4.371139e-08, -0.043, 0, 1, -1.8795898e-09, 0, 0, 0, 1, 0, 0, 0)
+material_override = ExtResource("2_m7ra3")
+mesh = SubResource("CylinderMesh_m7ra3")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0047781467, 0, 0)
+shape = SubResource("BoxShape3D_m7ra3")
